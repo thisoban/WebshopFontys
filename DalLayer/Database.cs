@@ -8,7 +8,7 @@ namespace DalLayer
 {
   public  class Database
       {
-        public static readonly string Connection = "Server=studmysql01.fhict.local;Uid=dbi419727;Database=dbi419727;Pwd=Test123!!;";
+        public static readonly string Connection = "Server=studmysql01.fhict.local;Uid=dbi419727;Database=dbi419727;Pwd=Test123!;";
         public  MySqlConnection Conn = new MySqlConnection(Connection);
 
         public void DataQuery(string query, Dictionary<string, object> dictionary)

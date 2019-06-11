@@ -50,5 +50,22 @@ namespace DalLayer
             string query = "INSERT INTO `product`( `Name`, `Description`, `Quantity`, `Sellprice`) VALUES (@Name,@Description, @Quantity , @Sellprice)";
             dal.DataQuery(query, dict);
         }
+
+        public void ProductDelete(Dataproduct ProductDelete)
+        {
+            string query = "DELETE FROM product WHERE Id = @Id";
+            dal.Conn.Open();
+            MySqlCommand command = new MySqlCommand(query, dal.Conn);
+            try
+            {
+                command.Parameters.Add(new MySqlParameter("@Id", ProductDelete.Id));
+                command.ExecuteNonQuery();
+            }
+            catch(MySqlException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            dal.Conn.Close();
+        }
     }
 }

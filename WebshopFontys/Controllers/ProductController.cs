@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+ using DataModel;
  using LogicLayer;
  using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,20 @@ namespace WebshopFontys.Controllers
         }
         public IActionResult ProductAdd()
         {
+           
             return View();
+        }
+       [HttpPost]
+        public IActionResult ProductAdd(Dataproduct ProductNew)
+        {
+            logic.productadd(ProductNew);
+            return View();
+        }
+        [HttpPost]
+        public IActionResult ProductDelete(Dataproduct ProductDelete)
+        {
+            logic.productadd(ProductDelete);
+            return Redirect("index");
         }
     }
 }

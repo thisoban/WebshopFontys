@@ -21,6 +21,11 @@ namespace LogicLayer
                 dallaag.ProductCreate(ProductNew);
         }
 
+        public void ProductDelete(Dataproduct ProductDelete)
+        {
+            dallaag.ProductDelete(ProductDelete);
+        }
+
         public void ProductShow()
         {
 

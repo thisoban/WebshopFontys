@@ -7,8 +7,24 @@
 
 @foreach (Dataproduct product in Model)
 {
-    @Html.HiddenFor(model => product.Id)
-    <div class="col-xs-6 col-sm-3">
-        <strong>@product.Name</strong>
-    </div>
-}
+    <div class="container">
+        @Html.HiddenFor(model => product.Id)
+        <div class="col-xs-6 col-sm-3">
+            <strong>@product.Name</strong>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <medium>@product.Description</medium>
+        </div>
+        <div class="col-xs-6 col-sm-7">
+            <small>@product.Quantity</small>
+        </div>
+        <div class="col-xs-6 col-sm-7">
+            <small>@product.Sellprice</small>
+        </div>
+        <div class="col-xs-6 col-sm-7">
+            @Html.ActionLink("Delete", "productDelete", "Product", new { id = product.Id })
+        </div>
+         </div>
+        }
+   
+    
