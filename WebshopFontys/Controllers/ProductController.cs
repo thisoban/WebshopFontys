@@ -14,5 +14,9 @@ namespace WebshopFontys.Controllers
         {
             return View(logic.Productlist());
         }
+        public IActionResult ProductAdd()
+        {
+            return View();
+        }
     }
 }

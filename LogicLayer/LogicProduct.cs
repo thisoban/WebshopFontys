@@ -16,9 +16,9 @@ namespace LogicLayer
            
             return Producten;
         }
-        public void productadd()
+        public void productadd(Dataproduct ProductNew)
         {
-
+                dallaag.ProductCreate(ProductNew);
         }
 
         public void ProductShow()

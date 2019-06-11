@@ -8,5 +8,6 @@ namespace DataModel
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Sellprice { get; set; }
+        public int Quantity { get; set; }
     }
 }

@@ -8,15 +8,14 @@ namespace DalLayer
 {
     public class DalProduct: IDalProduct
     {
-        public static string Connection = "Server=studmysql01.fhict.local;Uid=dbi419727;Database=dbi419727;Pwd=Kersen112!;";
-        public  MySqlConnection Conn = new MySqlConnection(Connection);
+        Database dal = new Database();
 
         public List<Dataproduct> ProductList()
         {
            List<Dataproduct>  productList = new List<Dataproduct>();
            string query = "SELECT * FROM product";
-           Conn.Open();
-           MySqlCommand command = new MySqlCommand(query, Conn);
+           dal.Conn.Open();
+           MySqlCommand command = new MySqlCommand(query, dal.Conn);
            MySqlDataReader reader = command.ExecuteReader();
            try
            { 
@@ -36,16 +35,20 @@ namespace DalLayer
            {
                Console.WriteLine("kan de query niet uitvoeren! LOL");
            }
-           Conn.Close();
+           dal.Conn.Close();
            return  productList;
         }
 
         public void ProductCreate(Dataproduct ProductNew)
         {
-            string query = "INSERT INTO `product`( `Name`, `Description`, `Quantity`, `Sellprice`) VALUES ( @name,@Description,@Quanitity,@Sellprice)";
-            Conn.Open();
-            MySqlCommand command = new MySqlCommand(query, Conn);
-            
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+            dict.Add("@Name", ProductNew.Name);
+            dict.Add("@Description", ProductNew.Description);
+            dict.Add("@Sellprice", ProductNew.Sellprice);
+            dict.Add("@Quantity", ProductNew.Quantity);
+
+            string query = "INSERT INTO `product`( `Name`, `Description`, `Quantity`, `Sellprice`) VALUES (@Name,@Description, @Quantity , @Sellprice)";
+            dal.DataQuery(query, dict);
         }
     }
 }
