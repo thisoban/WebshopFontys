@@ -1,0 +1,14 @@
+﻿@using DataModel;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>producten</h1>
+
+@foreach (Dataproduct product in Model)
+{
+    @Html.HiddenFor(model => product.Id)
+    <div class="col-xs-6 col-sm-3">
+        <strong>@product.Name</strong>
+    </div>
+}
