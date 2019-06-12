@@ -9,5 +9,6 @@ namespace DalLayer.Interfaces
     {
         List<Dataproduct> ProductList();
         void ProductCreate(Dataproduct ProductNew);
+        void ProductDelete(int id);
     }
 }

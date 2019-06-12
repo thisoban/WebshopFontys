@@ -51,14 +51,14 @@ namespace DalLayer
             dal.DataQuery(query, dict);
         }
 
-        public void ProductDelete(Dataproduct ProductDelete)
+        public void ProductDelete(int id)
         {
             string query = "DELETE FROM product WHERE Id = @Id";
             dal.Conn.Open();
             MySqlCommand command = new MySqlCommand(query, dal.Conn);
             try
             {
-                command.Parameters.Add(new MySqlParameter("@Id", ProductDelete.Id));
+                command.Parameters.Add(new MySqlParameter("@Id", id));
                 command.ExecuteNonQuery();
             }
             catch(MySqlException e)

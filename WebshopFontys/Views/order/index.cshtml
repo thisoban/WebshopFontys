@@ -1,7 +1,31 @@
-﻿
+﻿@using DataModel
+
 @{
     ViewData["Title"] = "index";
 }
 
 <h1>index</h1>
 
+@foreach (DataOrder order in Model)
+{
+<div class="container">
+    @Html.HiddenFor(model => order.Id)
+    <div class="col-xs-6 col-sm-3">
+        <strong>@order.Firstname</strong>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <medium>@order.Surname</medium>
+    </div>
+    <div class="col-xs-6 col-sm-7">
+        <small>@order.OrderItems</small>
+    </div>
+    <div class="col-xs-6 col-sm-7">
+        <small>@order.TotalPrice</small>
+    </div>
+    <div class="col-xs-6 col-sm-7">
+
+        @*@Html.ActionLink("Delete", "productDelete", "Product", new {id = product.Id},*@ )
+    </div>
+    @* <div> <a asp-action="ShowOrder" asp-route-id="@product">Delete</a></div>*@
+</div>
+}

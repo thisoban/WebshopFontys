@@ -17,7 +17,6 @@ namespace WebshopFontys.Controllers
         }
         public IActionResult ProductAdd()
         {
-           
             return View();
         }
        [HttpPost]
@@ -26,11 +25,11 @@ namespace WebshopFontys.Controllers
             logic.productadd(ProductNew);
             return View();
         }
-        [HttpPost]
-        public IActionResult ProductDelete(Dataproduct ProductDelete)
+     
+        public IActionResult ProductDelete(int id)
         {
-            logic.productadd(ProductDelete);
-            return Redirect("index");
+            logic.ProductDelete(id);
+            return RedirectToAction("index");
         }
     }
 }

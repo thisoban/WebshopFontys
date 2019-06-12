@@ -6,10 +6,11 @@ namespace DataModel
 {
    public class DataOrder
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Firstname { get; set; }
         public string Surname { get; set; }
-        public List<> OrderProduct { get; set; }
-        public int TotalPrice { get; set; }
+        public List<DataOrderItem> OrderItems { get; set; }
+        public int TotalPrice { get; set;}
+        public bool Payed { get; set;}
     }
 }

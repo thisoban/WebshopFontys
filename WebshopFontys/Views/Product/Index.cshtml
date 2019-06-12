@@ -22,9 +22,21 @@
             <small>@product.Sellprice</small>
         </div>
         <div class="col-xs-6 col-sm-7">
-            @Html.ActionLink("Delete", "productDelete", "Product", new { id = product.Id })
+            
+            <a class="btn btn-danger" href="@Url.Action("productDelete", new{id = product.Id})">Verwijder product</a>
         </div>
-         </div>
+        <div> <a asp-action="ProductDelete" asp-route-id="@product.Id">Delete</a></div>
+    </div>
+    <div class="align-content-center">
+        @using (Html.BeginForm("CartAdd", "Cart", FormMethod.Get)){
+            <input type="number" name="quantity" min="1" max="5">
+            <input type="hidden" name="id" value="@product.Id"/>
+            @Html.HiddenFor(model => product.Id)
+        <input class="btn btn-light" type="submit" value=" voeg toe aan winkelwagen" />
         }
+      
+    </div>
+   
+ }
    
     

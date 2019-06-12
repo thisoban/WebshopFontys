@@ -7,8 +7,9 @@ namespace DataModel
 {
    public class DataOrderItem
     {
-        private int Id { get; set; }
-        private string ProductName { get; set; }
-        private int Quantity { get; set; }
+        public int Id { get; set; }
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
     }
 }
