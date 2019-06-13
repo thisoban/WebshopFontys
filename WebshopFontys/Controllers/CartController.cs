@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using DataModel;
+using LogicLayer;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -12,8 +13,18 @@ namespace WebshopFontys.Controllers
 {
     public class CartController : Controller
     {
+        private LogicProduct product;
         public IActionResult Index()
         {
+           string cookie = Request.Cookies["CartItems"];
+            Dictionary<int, int>  winkelmandje = JsonConvert.DeserializeObject<Dictionary<int,int>>(cookie);
+           List<Dataproduct> allproducts = product.Productlist();
+           List<Dataproduct> CartProducts = new List<Dataproduct>();
+           foreach ((int key , int value) in winkelmandje)
+           {
+               CartProducts =  allproducts.Where(product => product.Id == key).ToList();
+                
+           }
             return View();
         }
        

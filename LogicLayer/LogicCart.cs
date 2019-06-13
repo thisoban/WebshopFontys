@@ -12,9 +12,10 @@ namespace LogicLayer
        private DalProduct product;
         public List<Dataproduct> CartShow()
         {
-            product.ProductList();
-            List<DataProducts> filteredList = DataProducts.Where( artikelenID => product.id).ToList();
-            return filteredList;
+            
+            //List<DataProducts> filteredList = DataProducts.Where( artikelenID => product.id).ToList();
+            //return filteredList;
+            return product.ProductList();
         }
     }
 }
