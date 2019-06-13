@@ -13,12 +13,12 @@ namespace WebshopFontys.Controllers
 {
     public class CartController : Controller
     {
-        private LogicProduct product;
-        public IActionResult Index()
-        {
+       
+        public IActionResult Cart(LogicProduct test)
+        {//need fix quanity add and description add to show on cart
            string cookie = Request.Cookies["CartItems"];
             Dictionary<int, int>  winkelmandje = JsonConvert.DeserializeObject<Dictionary<int,int>>(cookie);
-           List<Dataproduct> allproducts = product.Productlist();
+           List<Dataproduct> allproducts = test.Productlist().ToList();
            List<Dataproduct> CartProducts = new List<Dataproduct>();
            foreach ((int key , int value) in winkelmandje)
            {
