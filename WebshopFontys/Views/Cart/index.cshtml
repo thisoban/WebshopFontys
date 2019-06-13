@@ -1,7 +1,24 @@
-﻿
+﻿@using DataModel
 @{
-    ViewData["Title"] = "index";
+    ViewData["Title"] = "Winkelmand";
 }
 
 <h1>index</h1>
 
+@foreach (Dataproduct product in Model)
+{
+    <div class="container">
+    
+    <div class="col-xs-6 col-sm-3">
+        <strong>@product.Name</strong>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <medium>@product.Description</medium>
+    </div>
+    <div class="col-xs-6 col-sm-7">
+        <small>@product.Quantity</small>
+    </div>
+    <div class="col-xs-6 col-sm-7">
+        <small>@product.Sellprice</small>
+    </div>
+}

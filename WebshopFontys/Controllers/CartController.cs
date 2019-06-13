@@ -23,9 +23,8 @@ namespace WebshopFontys.Controllers
            foreach ((int key , int value) in winkelmandje)
            {
                CartProducts =  allproducts.Where(product => product.Id == key).ToList();
-                
            }
-            return View();
+            return View(CartProducts);
         }
        
         public IActionResult CartAdd(int id, int quantity)
