@@ -8,10 +8,15 @@ namespace WebshopFontys.Controllers
 {
     public class ProfileController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Profile()
         {
             //get info from user
             return View();
+        }
+        public IActionResult Order()
+        {
+            //get info from user
+            return RedirectToAction("Index","Order");
         }
     }
 }

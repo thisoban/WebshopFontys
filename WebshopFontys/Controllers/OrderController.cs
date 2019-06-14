@@ -20,6 +20,7 @@ namespace WebshopFontys.Controllers
 
         public IActionResult SingleOrder(DataOrder dataOrder)
         {
+            //zien van een order met klant en alles
             return View();
         }
     }

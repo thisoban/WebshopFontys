@@ -11,16 +11,10 @@
 <div class="container">
     @Html.HiddenFor(model => order.Id)
     <div class="col-xs-6 col-sm-3">
-        <strong>@order.Firstname</strong>
+        <strong>@order.CustomId</strong>
     </div>
     <div class="col-xs-6 col-sm-3">
-        <medium>@order.Surname</medium>
-    </div>
-    <div class="col-xs-6 col-sm-7">
-        <small>@order.OrderItems</small>
-    </div>
-    <div class="col-xs-6 col-sm-7">
-        <small>@order.TotalPrice</small>
+        <medium>@order.TotalPrice</medium>
     </div>
     <div class="col-xs-6 col-sm-7">
 

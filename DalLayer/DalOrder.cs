@@ -1,23 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using DataModel;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Cms;
 
 namespace DalLayer
 {
    public class DalOrder
    {
       Database data = new Database();
-        public List<DataModel.DataOrder> Orders()
+        public List<DataOrder> Orders()
         {
+            List<DataOrder> orders = new List<DataOrder>();
             int id = 1;
             // stored procedure
             string query = "call bestellingen(@id)";
             data.Conn.Open();
-
+            
             MySqlCommand Com = new MySqlCommand(query, data.Conn);
-            Com.Parameters.Add(new MySqlParameter("@id", id));
+            Com.Connection = data.Conn;
+            Com.CommandText = "call bestellingen ";
+            Com.CommandType = CommandType.StoredProcedure;
+
+            Com.Parameters.AddWithValue("@id", id);
+            Com.Parameters["@id"].Direction = ParameterDirection.Input;
+
+            Com.ExecuteNonQuery();
             MySqlDataReader reader = Com.ExecuteReader();
             try
             { 
@@ -27,20 +37,18 @@ namespace DalLayer
                     //create productlist
                     DataOrder order = new DataOrder();
                     order.Id = reader.GetInt32("Id");
-                    order.CustomId = reader.GetInt32("Name");
+                    order.CustomId = reader.GetInt32("CustomUser_Id");
                     order.TotalPrice = reader.GetDecimal("totalprice");
                     // save uitlening to the list
-                    Orders().Add(order);
+                    orders.Add(order);
                 }
             }
             catch
             {
                 Console.WriteLine("kan de query niet uitvoeren! LOL");
             }
-
             data.Conn.Close();
-
-            return Orders();
+            return orders;
         }
     }
 }

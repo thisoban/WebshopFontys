@@ -11,7 +11,7 @@ namespace WebshopFontys.Controllers
     public class ProductController : Controller
     {
         private LogicLayer.LogicProduct logic = new LogicProduct();
-        public IActionResult Index()
+        public IActionResult Products()
         {
             return View(logic.Productlist());
         }
@@ -23,13 +23,13 @@ namespace WebshopFontys.Controllers
         public IActionResult ProductAdd(Dataproduct ProductNew)
         {
             logic.productadd(ProductNew);
-            return View();
+            return  RedirectToAction("Products");
         }
      
         public IActionResult ProductDelete(int id)
         {
             logic.ProductDelete(id);
-            return RedirectToAction("index");
+            return RedirectToAction("Products");
         }
     }
 }
