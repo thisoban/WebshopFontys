@@ -11,7 +11,7 @@ namespace WebshopFontys.Controllers
     
     public class OrderController : Controller
     {
-        private LogicOrder Lgorder;
+        private LogicOrder Lgorder = new LogicOrder();
         public IActionResult Index(DataOrder orders)
         {
 

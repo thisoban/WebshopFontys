@@ -16,16 +16,16 @@ namespace DalLayer
             List<DataOrder> orders = new List<DataOrder>();
             int id = 1;
             // stored procedure
-            string query = "call bestellingen(@id)";
+          
             data.Conn.Open();
             
-            MySqlCommand Com = new MySqlCommand(query, data.Conn);
+            MySqlCommand Com = new MySqlCommand();
             Com.Connection = data.Conn;
-            Com.CommandText = "call bestellingen ";
+            Com.CommandText = "bestellingen ";
             Com.CommandType = CommandType.StoredProcedure;
 
-            Com.Parameters.AddWithValue("@id", id);
-            Com.Parameters["@id"].Direction = ParameterDirection.Input;
+            Com.Parameters.AddWithValue("@customid", id);
+            Com.Parameters["@customid"].Direction = ParameterDirection.Input;
 
             Com.ExecuteNonQuery();
             MySqlDataReader reader = Com.ExecuteReader();
