@@ -31,5 +31,10 @@ namespace WebshopFontys.Controllers
             logic.ProductDelete(id);
             return RedirectToAction("Products");
         }
+
+        public IActionResult Test()
+        {
+            return View(logic.Productlist());
+        }
     }
 }

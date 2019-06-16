@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using DataModel;
 using LogicLayer;
@@ -22,6 +23,11 @@ namespace WebshopFontys.Controllers
         {
             //zien van een order met klant en alles
             return View();
+        }
+
+        public IActionResult MakeOrder(Dataproduct dataProduct, DataOrder dataOrder)
+        {
+            return RedirectToPage("index");
         }
     }
 }

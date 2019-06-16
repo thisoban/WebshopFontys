@@ -10,10 +10,10 @@
     <div class="container">
         @Html.HiddenFor(model => product.Id)
         <div class="col-xs-6 col-sm-3">
-            <strong>@product.Name</strong>
+            <strong></strong>
         </div>
         <div class="col-xs-6 col-sm-3">
-            <medium>@product.Description</medium>
+            <medium></medium>
         </div>
         <div class="col-xs-6 col-sm-7">
             <small>@product.Quantity</small>
@@ -21,8 +21,41 @@
         <div class="col-xs-6 col-sm-7">
             <small>@product.Sellprice</small>
         </div>
+        
+        <div class="container">
+            <div class="row"> 
+                <div class="block span3">
+                    <div class="product">
+                        <img src="human.png">
+                        <div class="buttons">
+                            <a class="buy btn btn-large btn-info" href="#"><i class="icon-shopping-cart"></i> Add to Cart</a>
+                            <a class="preview btn btn-large btn-info" href="#"><i class="icon-eye-open"></i> View item</a>
+                        </div>
+                    </div>
+    
+                    <div class="info">
+                        <h4>@product.Name</h4>
+                        <span class="description">
+                            @product.Description
+                        </span>
+                        <span class="price">$62.97</span>
+                        <a class="btn btn-info pull-right" href="#"><i class="icon-shopping-cart"></i> Buy Now</a>
+                    </div>
+    
+                    <div class="details">
+                        <span class="time"><i class="icon-time"></i> 12 hours ago</span>
+                        <span class="rating pull-right">
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-xs-6 col-sm-7">
-            
             <a class="btn btn-danger" href="@Url.Action("productDelete", new{id = product.Id})">Verwijder product</a>
         </div>
         <div> <a asp-action="ProductDelete" asp-route-id="@product.Id">Delete</a></div>
