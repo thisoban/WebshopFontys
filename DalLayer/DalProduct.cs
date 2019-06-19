@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using DalLayer.Interfaces;
 using DataModel;
 using MySql.Data.MySqlClient;
@@ -66,6 +67,29 @@ namespace DalLayer
                 Console.WriteLine(e.Message);
             }
             dal.Conn.Close();
+        }
+        public void producten(Dataproduct productadd)
+        {
+            dal.Conn.Open();
+            
+            MySqlCommand Com = new MySqlCommand();
+            Com.Connection = dal.Conn;
+            Com.CommandText = "productadd";
+            Com.CommandType = CommandType.StoredProcedure;
+
+            Com.Parameters.AddWithValue("@name", productadd.Name);
+            Com.Parameters["@name"].Direction = ParameterDirection.Input;
+
+            Com.Parameters.AddWithValue("@description", productadd.Description);
+            Com.Parameters["@description"].Direction = ParameterDirection.Input;
+
+            Com.Parameters.AddWithValue("@quantity", productadd.Quantity);
+            Com.Parameters["@quantity"].Direction = ParameterDirection.Input;
+
+            Com.Parameters.AddWithValue("@sellprice", productadd.Sellprice);
+            Com.Parameters["@sellprice"].Direction = ParameterDirection.Input;
+
+            Com.ExecuteNonQuery();
         }
     }
 }

@@ -6,6 +6,6 @@ namespace LogicLayer
 {
     public class LogicUser
     {
-
+        
     }
 }

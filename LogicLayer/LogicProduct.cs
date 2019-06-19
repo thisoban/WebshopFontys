@@ -13,12 +13,16 @@ namespace LogicLayer
         public List<Dataproduct> Productlist()
         {
             List<Dataproduct> Producten = dallaag.ProductList();
-           
-            return Producten;
+            if (Producten != null)
+            {
+                return Producten;
+            }
+
+            return null;
         }
         public void productadd(Dataproduct ProductNew)
         {
-                dallaag.ProductCreate(ProductNew);
+                dallaag.producten(ProductNew);
         }
 
         public void ProductDelete(int id)

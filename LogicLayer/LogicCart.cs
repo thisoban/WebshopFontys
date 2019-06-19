@@ -8,7 +8,7 @@ using System.Linq;
 namespace LogicLayer
 {
    public class LogicCart
-   {
+   {//gaat naar dal order
        private DalProduct product;
         public List<Dataproduct> CartShow()
         {

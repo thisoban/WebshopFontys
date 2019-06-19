@@ -13,6 +13,11 @@ namespace WebshopFontys.Controllers
         private LogicLayer.LogicProduct logic = new LogicProduct();
         public IActionResult Products()
         {
+            if (logic.Productlist() == null)
+            {
+                return View();
+            }
+
             return View(logic.Productlist());
         }
         public IActionResult ProductAdd()

@@ -13,7 +13,7 @@ namespace WebshopFontys.Controllers
     public class OrderController : Controller
     {
         private LogicOrder Lgorder = new LogicOrder();
-        public IActionResult Index(DataOrder orders)
+        public IActionResult orders(DataOrder orders)
         {
 
             return View(Lgorder.GetOrders());
@@ -27,7 +27,8 @@ namespace WebshopFontys.Controllers
 
         public IActionResult MakeOrder(Dataproduct dataProduct, DataOrder dataOrder)
         {
-            return RedirectToPage("index");
+
+            return RedirectToPage("orders");
         }
     }
 }
